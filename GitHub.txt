@@ -1,0 +1,41 @@
+GitHub官网打不开的解决办法
+
+1）获取github官网ip
+
+WIN+R打开cmd，然后ping github.com，假如发现github的地址是20.205.243.166
+
+2）配置hosts文件，绕过DNS解析
+
+打开电脑C:\Windows\System32\drivers\etc下的hosts文件编辑（需要管理员权限，右键，管理员权限打开），新增如下一行配置
+
+20.205.243.166 github.com
+
+3）刷新DNS缓存
+
+WIN+R打开cmd，输入如下指令刷新DNS缓存
+
+ipconfig /flushdns
+
+
+
+GitHub官网打不开或访问慢备选方案1
+
+1）如果还是不能解决，就到https://ipaddress.com/分别查询github.com和github.global.ssl.fastly.net的ip值
+
+2）假如查询出来ip分别为配置到了hosts文件中的：
+
+140.82.113.4 github.com
+199.232.69.194 github.global.ssl.fastly.net
+
+3）然后再次刷新dns缓存，再试试访问github，应该就可以了
+
+
+
+GitHub官网打不开或访问慢备选方案2
+
+在gitee上有个开源项目名为 dev-sidecar，为开发者打辅助的边车工具，通过本地代理的方式将https请求代理到一些国内的加速通道上
+
+通过修改sni实现 github 直连加速 ，还支持一些 clone加速、头像加速、npm加速等等功能，具体的操作直接到项目的readme参考即可
+
+
+以上就是github官网打不开或访问慢的解决办法，相信你已经学会了，可以快乐地在github里玩耍了
